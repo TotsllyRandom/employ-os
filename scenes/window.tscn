@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://4mw2nsf6f6fw"]
+
+[ext_resource type="Script" uid="uid://dtyhpu4hf61oo" path="res://scripts/window.gd" id="1_oya5r"]
+
+[node name="Window" type="Control" unique_id=563440023 groups=["Window"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oya5r")
+
+[node name="Top Bar" type="Panel" parent="." unique_id=1144715892]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="BG" type="Panel" parent="." unique_id=2053857026]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2

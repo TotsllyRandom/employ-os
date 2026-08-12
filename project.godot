@@ -11,17 +11,32 @@ config_version=5
 [application]
 
 config/name="EmployOS"
+run/main_scene="res://scenes/desktop.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Settings="*res://scripts/Globals/Settings.gd"
+GameTime="*res://scripts/Globals/Time.gd"
+
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg")
+
+[global_group]
+
+Window="Is a window"
+
+[gui]
+
+theme/custom="uid://cjrt0rpauo24a"
 
 [physics]
 

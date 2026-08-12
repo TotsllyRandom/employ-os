@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://d0r1o6scg2dwu"]
+
+[ext_resource type="PackedScene" uid="uid://4mw2nsf6f6fw" path="res://scenes/window.tscn" id="1_xxa2h"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mv24p"]
+
+[node name="Desktop" type="TextureRect" unique_id=633953939]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_mv24p")
+
+[node name="Window" parent="." unique_id=563440023 instance=ExtResource("1_xxa2h")]
+layout_mode = 1
+offset_left = 333.0
+offset_top = 141.0
+offset_right = -238.0
+offset_bottom = -118.0
