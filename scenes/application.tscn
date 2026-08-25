@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dv8doavmxjs08"]
 
-[ext_resource type="Script" uid="uid://cf82ilfv43iyt" path="res://scripts/applications.gd" id="1_r2gvc"]
+[ext_resource type="Script" uid="uid://cf82ilfv43iyt" path="res://scripts/Globals/applications.gd" id="1_r2gvc"]
 
 [node name="application" type="Control" unique_id=563862692]
 layout_mode = 3

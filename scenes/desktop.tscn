@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d0r1o6scg2dwu"]
 
+[ext_resource type="Script" uid="uid://ddafkpq5yvtgb" path="res://scripts/desktop.gd" id="1_7gre8"]
 [ext_resource type="Texture2D" uid="uid://bnadfxnwsfl7m" path="res://icon.svg" id="1_xxa2h"]
 
 [node name="desktop" type="Control" unique_id=902827831]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7gre8")
 metadata/_edit_use_anchors_ = true
 
 [node name="desktopImage" type="TextureRect" parent="." unique_id=633953939]
