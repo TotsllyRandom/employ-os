@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d0r1o6scg2dwu"]
 
 [ext_resource type="Script" uid="uid://ddafkpq5yvtgb" path="res://scripts/desktop.gd" id="1_7gre8"]
-[ext_resource type="Texture2D" uid="uid://bnadfxnwsfl7m" path="res://icon.svg" id="1_xxa2h"]
+[ext_resource type="Texture2D" uid="uid://babsj2dbyc00f" path="res://assets/desptop.jpg" id="2_7gre8"]
 
 [node name="desktop" type="Control" unique_id=902827831]
 layout_mode = 3
@@ -15,9 +15,37 @@ metadata/_edit_use_anchors_ = true
 
 [node name="desktopImage" type="TextureRect" parent="." unique_id=633953939]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = -0.6111111
+anchor_top = -0.7345679
+anchor_right = 1.6111112
+anchor_bottom = 1.7345679
+offset_left = 704.0
+offset_top = 476.0
+offset_right = -704.0
+offset_bottom = -476.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_xxa2h")
+texture = ExtResource("2_7gre8")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="topBar" type="Panel" parent="." unique_id=1633363514]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="time" type="Label" parent="topBar" unique_id=353757612]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "fdsafdsafdsafdsafdsafdsa  "
+horizontal_alignment = 2
+vertical_alignment = 1

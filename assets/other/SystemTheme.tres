@@ -2,13 +2,27 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oya5r"]
 bg_color = Color(0.16924527, 0.16924533, 0.16924518, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0.29954743, 0.29954746, 0.2995473, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8k3l"]
+bg_color = Color(0.18896914, 0.18896914, 0.18896914, 1)
+border_width_left = 6
+border_width_top = 30
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.20691353, 0.20691359, 0.20691338, 1)
 border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 5.0
+expand_margin_top = 30.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
 [resource]
 Panel/styles/panel = SubResource("StyleBoxFlat_oya5r")
 Window/font_sizes/title_font_size = 20
+Window/styles/embedded_border = SubResource("StyleBoxFlat_y8k3l")
+Window/styles/embedded_unfocused_border = SubResource("StyleBoxFlat_y8k3l")
