@@ -19,7 +19,7 @@ func check_settings():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Make Window Debug"):
-		make_window("incorrectJob")
+		make_window(Applicatons.get_random())
 	$topBar/time.text = GameTime.get_clock_time()
 	
 func make_window(app:String):

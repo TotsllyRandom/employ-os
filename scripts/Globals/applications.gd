@@ -13,7 +13,7 @@ var apps = {
 	},
 	"incorrectJob":{
 		"min_size" = Vector2i(270,160),
-		"max_size" = Vector2i(270,160),
+		"max_size" = Vector2i(280,170),
 		"name" = "Requirements Not Met",
 	},
 }
@@ -24,3 +24,6 @@ var apps = {
 "max-size" - maximum size of window
 "req_job" - required job, if any
 """
+
+func get_random():
+	return apps.keys()[randi_range(0,len(apps.keys())-1)]
