@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dv8uyxba1qeg8"]
 
+[ext_resource type="Script" uid="uid://odjsvat6810l" path="res://scenes/apps/quickloans.gd" id="1_hi4xi"]
+
 [node name="Quickloans" type="Control" unique_id=661380680]
 layout_mode = 3
 anchors_preset = 15
@@ -7,12 +9,133 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hi4xi")
+
+[node name="Main" type="Panel" parent="." unique_id=1216655607]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Usable Area" type="Control" parent="Main" unique_id=1939413601]
+layout_mode = 1
+anchor_top = 0.07716049
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Home" type="Control" parent="Main/Usable Area" unique_id=499301815]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Main/Usable Area/Home" unique_id=1743184586]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -11.5
+offset_right = 23.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Home"
+
+[node name="Customer" type="Control" parent="Main/Usable Area" unique_id=391591908]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="Main/Usable Area/Customer" unique_id=379508376]
+layout_mode = 1
+offset_left = 5.0
+offset_top = 10.0
+offset_right = 81.0
+offset_bottom = 33.0
+text = "Customer"
+vertical_alignment = 1
+
+[node name="Loan Amount" type="Label" parent="Main/Usable Area/Customer" unique_id=892242409]
+layout_mode = 1
+offset_left = 5.0
+offset_top = 40.0
+offset_right = 81.0
+offset_bottom = 63.0
+text = "Customer"
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="Main/Usable Area/Customer" unique_id=363325163]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/Usable Area/Customer/Panel" unique_id=666979552]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Approve" type="Button" parent="Main/Usable Area/Customer/Panel/HBoxContainer" unique_id=2008637783]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Approve"
+
+[node name="Deny" type="Button" parent="Main/Usable Area/Customer/Panel/HBoxContainer" unique_id=258525749]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Deny"
+
+[node name="Employee" type="Control" parent="Main/Usable Area" unique_id=1069571698]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label3" type="Label" parent="Main/Usable Area/Employee" unique_id=1842957284]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -11.5
+offset_right = 38.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Employee"
 
 [node name="Button Panel" type="Panel" parent="." unique_id=592873805]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 50.0
+offset_bottom = 25.0
 grow_horizontal = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Button Panel" unique_id=873846709]
@@ -38,3 +161,9 @@ text = "Customer"
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Employee"
+
+[connection signal="pressed" from="Main/Usable Area/Customer/Panel/HBoxContainer/Approve" to="." method="loan_approved"]
+[connection signal="pressed" from="Main/Usable Area/Customer/Panel/HBoxContainer/Deny" to="." method="loan_denied"]
+[connection signal="pressed" from="Button Panel/HBoxContainer/Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="Button Panel/HBoxContainer/Customer" to="." method="_on_customer_pressed"]
+[connection signal="pressed" from="Button Panel/HBoxContainer/Employee" to="." method="_on_employee_pressed"]

@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Make Window Debug"):
 		make_window(Applicatons.get_random())
 	$topBar/time.text = GameTime.get_clock_time()
+	$topBar/money.text = "$%d" % [randi_range(0,99999999999)]
 	
 func make_window(app:String):
 	var win = Window.new()

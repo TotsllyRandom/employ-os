@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cskqe5xqlofp4"]
+
+[ext_resource type="Script" uid="uid://58abmniv47jw" path="res://scenes/apps/contacts.gd" id="1_kfsjr"]
+
+[node name="contacts" type="Control" unique_id=1453503717]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kfsjr")
+
+[node name="Usable" type="Control" parent="." unique_id=988400504]
+layout_mode = 1
+anchor_left = 0.017361112
+anchor_top = 0.030864198
+anchor_right = 0.9826389
+anchor_bottom = 0.9691358
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Usable" unique_id=2089270282]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Name" type="Label" parent="Usable/VBoxContainer" unique_id=1363049707]
+layout_mode = 2
+
+[node name="Age" type="Label" parent="Usable/VBoxContainer" unique_id=1047119831]
+layout_mode = 2
+
+[node name="Job" type="Label" parent="Usable/VBoxContainer" unique_id=1751270422]
+layout_mode = 2
+
+[node name="Education" type="Label" parent="Usable/VBoxContainer" unique_id=221430700]
+layout_mode = 2
+
+[node name="Credit" type="Label" parent="Usable/VBoxContainer" unique_id=1696022666]
+layout_mode = 2
+
+[node name="Status" type="Label" parent="Usable/VBoxContainer" unique_id=453954833]
+layout_mode = 2
