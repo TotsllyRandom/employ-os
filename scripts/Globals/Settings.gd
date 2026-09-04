@@ -2,6 +2,11 @@ extends Node
 
 signal settings_changed
 
+var use_custom_desktop: bool = false:
+	set(new):
+		use_custom_desktop = new
+		settings_changed.emit()
+
 var show_seconds: bool = true:
 	set(new):
 		show_seconds = new

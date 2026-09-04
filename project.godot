@@ -21,6 +21,7 @@ Settings="*res://scripts/Globals/Settings.gd"
 GameTime="*res://scripts/Globals/Time.gd"
 Applicatons="*uid://cf82ilfv43iyt"
 Customers="*uid://dcuk7dk6qnr7c"
+PlayerData="*uid://uoplp4ndm4xp"
 
 [display]
 
