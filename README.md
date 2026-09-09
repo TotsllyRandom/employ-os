@@ -1,2 +1,2 @@
-# employ-os
-Working has never been so fun!
+# Employ OS
+*A game about working a desk job*
