@@ -56,12 +56,14 @@ func update_screens():
 func _on_employee_pressed() -> void:
 	screen = "Employee"
 
-func loan_complete() -> void:
+func loan_complete(result: String) -> void:
+	if $"Main/Usable Area/Customer/Loan Amount".text == result:
+		PlayerData.player_data["money"] += 50
 	delete_customer(true)
 
 func loan_approved() -> void:
-	loan_complete()
+	loan_complete("Approve")
 
 
 func loan_denied() -> void:
-	loan_complete()
+	loan_complete("Deny")
