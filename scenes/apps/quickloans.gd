@@ -285,10 +285,11 @@ func double_check_rules(d):
 		var type = RULES[rule].get("type")
 
 		if type == "age":
-			if hold.has("age") or hold.has("min_age") or hold.has("max_age"):
+			if hold.has("min_age") or hold.has("max_age"):
 				make_rules(d)
 				return
-			hold.append("age")
+			hold.append("min_age")
+			hold.append("max_age")
 
 		elif hold.has(type):
 			make_rules(d)
