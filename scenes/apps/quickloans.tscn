@@ -21,15 +21,13 @@ grow_vertical = 2
 
 [node name="Usable Area" type="Control" parent="Main" unique_id=1939413601]
 layout_mode = 1
-anchor_top = 0.07716049
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="Home" type="Control" parent="Main/Usable Area" unique_id=499301815]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,22 +35,62 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Main/Usable Area/Home" unique_id=1743184586]
+[node name="InShift" type="Control" parent="Main/Usable Area/Home" unique_id=1183941706]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndShift" type="Button" parent="Main/Usable Area/Home/InShift" unique_id=180342923]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -104.5
+offset_top = -31.0
+offset_right = 104.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Clock Out Early (End Shift)"
+
+[node name="Rules" type="Label" parent="Main/Usable Area/Home/InShift" unique_id=1743184586]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Home"
+
+[node name="OutShift" type="Control" parent="Main/Usable Area/Home" unique_id=1213115708]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartShift" type="Button" parent="Main/Usable Area/Home/OutShift" unique_id=696999685]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -23.5
-offset_top = -11.5
-offset_right = 23.5
-offset_bottom = 11.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Home"
+text = "Clock In (Start Shift)"
 
 [node name="Customer" type="Control" parent="Main/Usable Area" unique_id=391591908]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,6 +144,20 @@ text = "Approve"
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Deny"
+
+[node name="Warn" type="Label" parent="Main/Usable Area/Customer" unique_id=129493032]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "You are not currently clocked in. To work, start a shift on the \"Home\" tab."
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Employee" type="Control" parent="Main/Usable Area" unique_id=1069571698]
 visible = false
@@ -162,6 +214,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Employee"
 
+[connection signal="pressed" from="Main/Usable Area/Home/InShift/EndShift" to="." method="_on_end_shift_pressed"]
+[connection signal="pressed" from="Main/Usable Area/Home/OutShift/StartShift" to="." method="_on_start_shift_pressed"]
 [connection signal="pressed" from="Main/Usable Area/Customer/Panel/HBoxContainer/Approve" to="." method="loan_approved"]
 [connection signal="pressed" from="Main/Usable Area/Customer/Panel/HBoxContainer/Deny" to="." method="loan_denied"]
 [connection signal="pressed" from="Button Panel/HBoxContainer/Home" to="." method="_on_home_pressed"]

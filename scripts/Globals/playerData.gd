@@ -28,7 +28,6 @@ func _ready() -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		print("Game closing! Saving player data...")
 		save_player_data()
 		
 		get_tree().quit()
@@ -41,12 +40,10 @@ func load_player_dir() -> void:
 		
 		if not DirAccess.dir_exists_absolute(p):
 			DirAccess.make_dir_absolute(p)
-			print("Created directory: " + p)
 	
 	var dir = DirAccess.open(PLAYER_DIR)
 	
 	if dir == null:
-		print("Failed to open player directory.")
 		return
 		
 	
