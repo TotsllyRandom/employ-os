@@ -150,7 +150,7 @@ var names = {
 	]
 }
 
-func make_customer(job:String):
+func make_customer(_job:String):
 	##job will determine which job the customer is for.
 	customer = {
 	"name" = "",

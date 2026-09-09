@@ -6,15 +6,18 @@ func _ready():
 	if name == "DELETE":
 		queue_free()
 		return
-	title = Applicatons.apps[name].get("name")
+	var n = name
+	if Applicatons.apps[name].get("req_job") != null && Applicatons.apps[name].get("req_job") != PlayerData.player_data["job"]:
+		n = "incorrectJob"
+	title = Applicatons.apps[n].get("name")
 	
-	var scene = load("res://scenes/apps/" + name + ".tscn")
+	var scene = load("res://scenes/apps/" + n + ".tscn")
 	if scene:
 		add_child(scene.instantiate())
-	if Applicatons.apps[name].get("min_size"):
-		min_size = Applicatons.apps[name].get("min_size")
-	if Applicatons.apps[name].get("max_size"):
-		max_size = Applicatons.apps[name].get("max_size")
+	if Applicatons.apps[n].get("min_size"):
+		min_size = Applicatons.apps[n].get("min_size")
+	if Applicatons.apps[n].get("max_size"):
+		max_size = Applicatons.apps[n].get("max_size")
 		
 func close():
 	queue_free()

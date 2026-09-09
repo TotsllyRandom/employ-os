@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://c20cohbv8ve4k"]
+
+[ext_resource type="Script" uid="uid://c501u35153vm2" path="res://scenes/apps/settings.gd" id="1_1jiet"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jiet"]
+bg_color = Color(0.19434926, 0.19434929, 0.19434917, 1)
+
+[node name="Settings" type="Control" unique_id=942484547]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1jiet")
+
+[node name="Main" type="Panel" parent="." unique_id=1713900569]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main" unique_id=314967372]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Show_seconds" type="Panel" parent="Main/VBoxContainer" unique_id=1808805322]
+custom_minimum_size = Vector2(0, 40)
+propagate_maximum_size = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1jiet")
+
+[node name="Label" type="Label" parent="Main/VBoxContainer/Show_seconds" unique_id=1800658425]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.8
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Show seconds on clock"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="Main/VBoxContainer/Show_seconds" unique_id=279378817]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Show AMPM" type="Panel" parent="Main/VBoxContainer" unique_id=1514794504]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1jiet")
+
+[node name="Label" type="Label" parent="Main/VBoxContainer/Show AMPM" unique_id=1784913497]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.8
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Show AM/PM on clock"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="Main/VBoxContainer/Show AMPM" unique_id=1286304981]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Break" type="Panel" parent="Main/VBoxContainer" unique_id=2059131941]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1jiet")
+
+[node name="OpenPlayerFolder" type="Panel" parent="Main/VBoxContainer" unique_id=848279138]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1jiet")
+
+[node name="Label" type="Label" parent="Main/VBoxContainer/OpenPlayerFolder" unique_id=231740203]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.8
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Open User Folder"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Main/VBoxContainer/OpenPlayerFolder" unique_id=1351572969]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Open Folder"
+
+[node name="UseCustomDesktop2" type="Panel" parent="Main/VBoxContainer" unique_id=2085042991]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1jiet")
+
+[node name="Label" type="Label" parent="Main/VBoxContainer/UseCustomDesktop2" unique_id=1991632857]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.8
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Use Custom Desktop"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="Main/VBoxContainer/UseCustomDesktop2" unique_id=368137725]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[connection signal="pressed" from="Main/VBoxContainer/OpenPlayerFolder/Button" to="." method="open_user_folder"]

@@ -1,30 +1,167 @@
 extends Control
 
 var guide = {
-	"min_age" = 0,
-	"max_age" = 106,
+	"min_age": 0,
+	"max_age": 106,
+	"min_credit_score": 300,
+	"max_credit_score": 850,
+	"required_education": [],
+	"allowed_statuses": [],
 }
 ## All Rules
 const RULES = [
-	{
-		"text" : "Applicant must be 18 or older.",
-		"diff" : 1,
-	},
-	{
-		"text" : "Applicant must under 90 years old.",
-		"diff" : 1,
-	},
+	{"text" : "Applicant must be 18 or older.", "diff" : 1, "type" : "min_age"},
+	{"text" : "Applicant must under 90 years old.", "diff" : 1, "type" : "min_age"},
+	{"text" : "Applicant must be 21 or older.", "diff" : 1, "type" : "min_age"},
+	{"text" : "Applicant must be 25 or older.", "diff" : 2, "type" : "min_age"},
+	{"text" : "Applicant must be under 80 years old.", "diff" : 1, "type" : "max_age"},
+	{"text" : "Applicant must be under 70 years old.", "diff" : 2, "type" : "max_age"},
+	{"text" : "Applicant must be under 65 years old.", "diff" : 2, "type" : "max_age"},
+	{"text" : "Applicant must have a credit score of 500 or higher.", "diff" : 1, "type" : "min_credit"},
+	{"text" : "Applicant must have a credit score of 550 or higher.", "diff" : 1, "type" : "min_credit"},
+	{"text" : "Applicant must have a credit score of 600 or higher.", "diff" : 1, "type" : "min_credit"},
+	{"text" : "Applicant must have a credit score of 650 or higher.", "diff" : 2, "type" : "min_credit"},
+	{"text" : "Applicant must have a credit score of 700 or higher.", "diff" : 2, "type" : "min_credit"},
+	{"text" : "Applicant must have a credit score of 750 or higher.", "diff" : 3, "type" : "min_credit"},
+	{"text" : "Applicant must have a credit score under 800.", "diff" : 2, "type" : "max_credit"},
+	{"text" : "Applicant must have a credit score under 750.", "diff" : 2, "type" : "max_credit"},
+	{"text" : "Applicant must have a credit score under 700.", "diff" : 3, "type" : "max_credit"},
+	{"text" : "Applicant must have no education.", "diff" : 1, "type" : "education"},
+	{"text" : "Applicant must have at least a Highschool/GED education.", "diff" : 1, "type" : "education"},
+	{"text" : "Applicant must have some college education.", "diff" : 2, "type" : "education"},
+	{"text" : "Applicant must have a Doctorate.", "diff" : 3, "type" : "education"},
+	{"text" : "Applicant must be Low Class.", "diff" : 1, "type" : "class"},
+	{"text" : "Applicant must be Middle Class or Upper Class.", "diff" : 1, "type" : "class"},
+	{"text" : "Applicant must be Upper Class.", "diff" : 2, "type" : "class"},
+	{"text" : "Applicant must not be Low Class.", "diff" : 1, "type" : "class"},
+	{"text" : "Applicant must be Middle Class.", "diff" : 2, "type" : "class"},
+	{"text" : "Applicant must be between 18 and 65 years old.", "diff" : 2, "type" : "age"},
+	{"text" : "Applicant must be between 21 and 70 years old.", "diff" : 2, "type" : "age"},
+	{"text" : "Applicant must be between 25 and 60 years old.", "diff" : 3, "type" : "age"},
+	{"text" : "Applicant must be 30 or older.", "diff" : 2, "type" : "min_age"},
+	{"text" : "Applicant must be 40 or older.", "diff" : 2, "type" : "min_age"},
+	{"text" : "Applicant must be under 60 years old.", "diff" : 3, "type" : "max_age"},
+	{"text" : "Applicant must be under 50 years old.", "diff" : 3, "type" : "max_age"},
+	{"text" : "Applicant must have a credit score of 620 or higher.", "diff" : 1, "type" : "min_credit"},
+	{"text" : "Applicant must have a credit score of 680 or higher.", "diff" : 2, "type" : "min_credit"},
+	{"text" : "Applicant must have a credit score of 720 or higher.", "diff" : 3, "type" : "min_credit"},
+	{"text" : "Applicant must have a credit score under 850.", "diff" : 1, "type" : "max_credit"},
 ]
 
 func interpret_rules(text: String):
 	match text:
 		"Applicant must be 18 or older.":
-			guide["min_age"] = 18
+			guide["min_age"] = max(guide["min_age"], 18)
 			return
 		"Applicant must under 90 years old.":
-			guide["max_age"] = 90
+			guide["max_age"] = min(guide["max_age"], 90)
 			return
-		
+		"Applicant must be 21 or older.":
+			guide["min_age"] = max(guide["min_age"], 21)
+			return
+		"Applicant must be 25 or older.":
+			guide["min_age"] = max(guide["min_age"], 25)
+			return
+		"Applicant must be under 80 years old.":
+			guide["max_age"] = min(guide["max_age"], 80)
+			return
+		"Applicant must be under 70 years old.":
+			guide["max_age"] = min(guide["max_age"], 70)
+			return
+		"Applicant must be under 65 years old.":
+			guide["max_age"] = min(guide["max_age"], 65)
+			return
+		"Applicant must have a credit score of 500 or higher.":
+			guide["min_credit_score"] = max(guide["min_credit_score"], 500)
+			return
+		"Applicant must have a credit score of 550 or higher.":
+			guide["min_credit_score"] = max(guide["min_credit_score"], 550)
+			return
+		"Applicant must have a credit score of 600 or higher.":
+			guide["min_credit_score"] = max(guide["min_credit_score"], 600)
+			return
+		"Applicant must have a credit score of 650 or higher.":
+			guide["min_credit_score"] = max(guide["min_credit_score"], 650)
+			return
+		"Applicant must have a credit score of 700 or higher.":
+			guide["min_credit_score"] = max(guide["min_credit_score"], 700)
+			return
+		"Applicant must have a credit score of 750 or higher.":
+			guide["min_credit_score"] = max(guide["min_credit_score"], 750)
+			return
+		"Applicant must have a credit score under 800.":
+			guide["max_credit_score"] = min(guide["max_credit_score"], 800)
+			return
+		"Applicant must have a credit score under 750.":
+			guide["max_credit_score"] = min(guide["max_credit_score"], 750)
+			return
+		"Applicant must have a credit score under 700.":
+			guide["max_credit_score"] = min(guide["max_credit_score"], 700)
+			return
+		"Applicant must have no education.":
+			guide["required_education"] = ["No Education"]
+			return
+		"Applicant must have at least a Highschool/GED education.":
+			guide["required_education"] = ["Highschool/GED", "Some College", "Doctorate"]
+			return
+		"Applicant must have some college education.":
+			guide["required_education"] = ["Some College", "Doctorate"]
+			return
+		"Applicant must have a Doctorate.":
+			guide["required_education"] = ["Doctorate"]
+			return
+		"Applicant must be Low Class.":
+			guide["allowed_statuses"] = ["Low Class"]
+			return
+		"Applicant must be Middle Class or Upper Class.":
+			guide["allowed_statuses"] = ["Middle Class", "Upper Class"]
+			return
+		"Applicant must be Upper Class.":
+			guide["allowed_statuses"] = ["Upper Class"]
+			return
+		"Applicant must not be Low Class.":
+			guide["allowed_statuses"] = ["Middle Class", "Upper Class"]
+			return
+		"Applicant must be Middle Class.":
+			guide["allowed_statuses"] = ["Middle Class"]
+			return
+		"Applicant must be between 18 and 65 years old.":
+			guide["min_age"] = max(guide["min_age"], 18)
+			guide["max_age"] = min(guide["max_age"], 65)
+			return
+		"Applicant must be between 21 and 70 years old.":
+			guide["min_age"] = max(guide["min_age"], 21)
+			guide["max_age"] = min(guide["max_age"], 70)
+			return
+		"Applicant must be between 25 and 60 years old.":
+			guide["min_age"] = max(guide["min_age"], 25)
+			guide["max_age"] = min(guide["max_age"], 60)
+			return
+		"Applicant must be 30 or older.":
+			guide["min_age"] = max(guide["min_age"], 30)
+			return
+		"Applicant must be 40 or older.":
+			guide["min_age"] = max(guide["min_age"], 40)
+			return
+		"Applicant must be under 60 years old.":
+			guide["max_age"] = min(guide["max_age"], 60)
+			return
+		"Applicant must be under 50 years old.":
+			guide["max_age"] = min(guide["max_age"], 50)
+			return
+		"Applicant must have a credit score of 620 or higher.":
+			guide["min_credit_score"] = max(guide["min_credit_score"], 620)
+			return
+		"Applicant must have a credit score of 680 or higher.":
+			guide["min_credit_score"] = max(guide["min_credit_score"], 680)
+			return
+		"Applicant must have a credit score of 720 or higher.":
+			guide["min_credit_score"] = max(guide["min_credit_score"], 720)
+			return
+		"Applicant must have a credit score under 850.":
+			guide["max_credit_score"] = min(guide["max_credit_score"], 850)
+			return
+
 
 ## ruleset made when player starts shift
 var rules = []
@@ -109,10 +246,28 @@ func update_screens():
 func _on_employee_pressed() -> void:
 	screen = "Employee"
 
+
 func loan_complete(result: String) -> void:
 	var ret = "Approve"
-	if Customers.customer["age"] != clamp(Customers.customer["age"], guide["min_age"], guide["max_age"]):
+
+	if Customers.customer["age"] < guide["min_age"]:
 		ret = "Deny"
+	if Customers.customer["age"] >= guide["max_age"]:
+		ret = "Deny"
+
+	if Customers.customer["credit score"] < guide["min_credit_score"]:
+		ret = "Deny"
+	if Customers.customer["credit score"] >= guide["max_credit_score"]:
+		ret = "Deny"
+
+	if guide["required_education"].size() > 0:
+		if not Customers.customer["education"] in guide["required_education"]:
+			ret = "Deny"
+
+	if guide["allowed_statuses"].size() > 0:
+		if not Customers.customer["status"] in guide["allowed_statuses"]:
+			ret = "Deny"
+
 	if result == ret:
 		PlayerData.player_data["money"] += 50
 	delete_customer(true)
@@ -123,11 +278,36 @@ func loan_approved() -> void:
 func loan_denied() -> void:
 	loan_complete("Deny")
 
+func double_check_rules(d):
+	var ret := false
+	
+	var hold = []
+	for rule in rules:
+		var i = RULES[rule].get("type")
+		if i == "age":
+			if hold.has("max_age") or hold.has("min_age"):
+				ret = true
+			hold.append("max_age")
+			i = "min_age"
+		if hold.has(i):
+			ret = true
+		hold.append(i)
+	if ret:
+		make_rules(d)
+
 func make_rules(diff:int):
 	diff = clamp(diff, 1, 5)
 	diff = 3
 	
 	rules = []
+	
+	guide["min_age"] = 0
+	guide["max_age"] = 106
+	guide["min_credit_score"] = 300
+	guide["max_credit_score"] = 850
+	guide["required_education"] = []
+	guide["allowed_statuses"] = []
+	
 	
 	for i in range(diff):
 		var new_rule = -1
@@ -135,11 +315,9 @@ func make_rules(diff:int):
 			new_rule = randi_range(0,len(RULES)-1)
 		if new_rule >= 0:
 			rules.append(new_rule)
-	print(rules)
 	for rule in rules:
 		interpret_rules(RULES[rule]["text"])
-	print(guide)
-		
+	double_check_rules(diff)
 
 func get_rule_text():
 	var ret := "\n"

@@ -19,4 +19,4 @@ func _process(delta: float) -> void:
 	$Usable/VBoxContainer/Age.text = str(Customers.customer.get("age"))
 	$Usable/VBoxContainer/Education.text = Customers.customer.get("education")
 	$Usable/VBoxContainer/Status.text = Customers.customer.get("status")
-	$Usable/VBoxContainer/Credit.text = str(Customers.customer.get("credit score"))
+	$Usable/VBoxContainer/Credit.text = "Credit Score: " + str(Customers.customer.get("credit score"))

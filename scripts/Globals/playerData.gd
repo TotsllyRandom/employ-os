@@ -2,10 +2,10 @@ extends Node
 
 ## Default Player Data
 var default_player_data = {
-	"name" = "John Doe",
-	"money" = 100,
-	"job" = "quickloans",
-	"exp" = 0,
+	"name" : "John Doe",
+	"money" : 100,
+	"job" : "quickloans",
+	"exp" : 0,
 }
 
 ## Real Player Data
@@ -28,8 +28,8 @@ func _ready() -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		print("SAVING PLAYER DATA: ", player_data)
 		save_player_data()
-		
 		get_tree().quit()
 
 

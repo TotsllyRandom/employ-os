@@ -65,6 +65,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Home"
+autowrap_mode = 2
 
 [node name="OutShift" type="Control" parent="Main/Usable Area/Home" unique_id=1213115708]
 layout_mode = 1

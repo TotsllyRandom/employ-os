@@ -7,6 +7,10 @@ var apps = {
 		"req_job" = "quickloans",
 		"name" = "Quickloans",
 	},
+	"settings":{
+		"min_size" = Vector2i(200,300),
+		"name" = "Settings",
+	},
 	"contacts":{
 		"min_size" = Vector2i(400,220),
 		"name" = "Contacts",
