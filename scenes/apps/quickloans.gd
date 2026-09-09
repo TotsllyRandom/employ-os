@@ -279,21 +279,31 @@ func loan_denied() -> void:
 	loan_complete("Deny")
 
 func double_check_rules(d):
-	var ret := false
-	
 	var hold = []
+
 	for rule in rules:
-		var i = RULES[rule].get("type")
-		if i == "age":
-			if hold.has("max_age") or hold.has("min_age"):
-				ret = true
-			hold.append("max_age")
-			i = "min_age"
-		if hold.has(i):
-			ret = true
-		hold.append(i)
-	if ret:
+		var type = RULES[rule].get("type")
+
+		if type == "age":
+			if hold.has("age") or hold.has("min_age") or hold.has("max_age"):
+				make_rules(d)
+				return
+			hold.append("age")
+
+		elif hold.has(type):
+			make_rules(d)
+			return
+
+		else:
+			hold.append(type)
+
+	if guide["min_age"] >= guide["max_age"]:
 		make_rules(d)
+		return
+
+	if guide["min_credit_score"] >= guide["max_credit_score"]:
+		make_rules(d)
+		return
 
 func make_rules(diff:int):
 	diff = clamp(diff, 1, 5)

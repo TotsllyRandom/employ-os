@@ -11,8 +11,11 @@ config_version=5
 [application]
 
 config/name="EmployOS"
+config/version="0.2.2"
 run/main_scene="res://scenes/desktop.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/bg_color=Color(0.19793725, 0.19793725, 0.19793719, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -25,8 +28,11 @@ PlayerData="*uid://uoplp4ndm4xp"
 
 [display]
 
+window/size/mode=3
+window/size/borderless=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="uid://dc2qpy2nwnfgi"
 
 [editor_plugins]
 
@@ -54,6 +60,7 @@ theme/custom="uid://cjrt0rpauo24a"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
