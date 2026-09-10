@@ -23,8 +23,8 @@ This game takes place on a fake Operating System (called Employ OS) where you ca
 
 [Download Latest Release](https://github.com/TotsllyRandom/employ-os/releases/latest)
 1. Click this link
-2. Download the .exe file
-3. Run
+2. Download the file you'd like to use
+3. Run the file
 
 ## How to Play
 
