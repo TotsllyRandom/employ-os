@@ -22,3 +22,13 @@ This game takes place on a fake Operating System (called Employ OS) where you ca
 ## How to Run
 
 [Download Latest Release](https://github.com/TotsllyRandom/employ-os/releases/latest)
+1. Click this link
+2. Download the .exe file
+3. Run
+
+## How to Play
+
+1. Hit space to open new tabs. This will be changed before the first release. 
+2. Hit space until you have "Quickloans" and "Contacts"
+3. Press the "Start Shift" button in Quickloans
+4. Follow the rules in Quickloans' home menu, to approve or deny applicants in the "Customer" menu
