@@ -153,22 +153,29 @@ var names = {
 func make_customer(_job:String):
 	##job will determine which job the customer is for.
 	customer = {
-	"name" = "",
-	"age" = 0,
-	"job" = "",
-	"education" = "",
-	"credit score" = "",
-	"status" = "",
+	"name" : "",
+	"age" : 0,
+	"job" : "",
+	"credit score" : 0,
+	"income" : 0,
+	"debt" : 0,
+	"employment years" : 0,
+	"loan amount" : 0,
+	"dti" : 0,
+	"payment history" : "",
 	}
 	customer["name"] = make_name()
-	customer["age"] = randi_range(1,105)
-	var jobs = ["loan Officer"]
+	customer["age"] = randi_range(18,105)
+	var jobs = ["Loan Officer"]
 	customer["job"] = jobs[randi_range(0, len(jobs)-1)]
-	var educations = ["No Education", "Highschool/GED", "Some College", "Doctorate"]
-	customer["education"] = educations[randi_range(0, len(educations)-1)]
 	customer["credit score"] = randi_range(300,850)
-	var statuses = ["Low Class", "Middle Class", "Upper Class"]
-	customer["status"] = statuses[randi_range(0, len(statuses)-1)]
+	customer["income"] = randi_range(20000,150000)
+	customer["debt"] = randi_range(0,100000)
+	customer["employment years"] = randi_range(0,20)
+	customer["loan amount"] = randi_range(1000,100000)
+	customer["dti"] = randi_range(5,70)
+	var payment_histories = ["Excellent", "Good", "Fair", "Poor"]
+	customer["payment history"] = payment_histories[randi_range(0, len(payment_histories)-1)]
 
 func delete_customer():
 	customer = {}
