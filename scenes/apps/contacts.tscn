@@ -35,11 +35,23 @@ layout_mode = 2
 [node name="Job" type="Label" parent="Usable/VBoxContainer" unique_id=1751270422]
 layout_mode = 2
 
-[node name="Education" type="Label" parent="Usable/VBoxContainer" unique_id=221430700]
-layout_mode = 2
-
 [node name="Credit" type="Label" parent="Usable/VBoxContainer" unique_id=1696022666]
 layout_mode = 2
 
-[node name="Status" type="Label" parent="Usable/VBoxContainer" unique_id=453954833]
+[node name="Income" type="Label" parent="Usable/VBoxContainer" unique_id=1125795591]
+layout_mode = 2
+
+[node name="Debt" type="Label" parent="Usable/VBoxContainer" unique_id=2082870105]
+layout_mode = 2
+
+[node name="Employment" type="Label" parent="Usable/VBoxContainer" unique_id=1675111640]
+layout_mode = 2
+
+[node name="Loan" type="Label" parent="Usable/VBoxContainer" unique_id=708430405]
+layout_mode = 2
+
+[node name="DTI" type="Label" parent="Usable/VBoxContainer" unique_id=369625052]
+layout_mode = 2
+
+[node name="PaymentHistory" type="Label" parent="Usable/VBoxContainer" unique_id=1180587160]
 layout_mode = 2

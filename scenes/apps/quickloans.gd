@@ -89,7 +89,7 @@ const RULES = [
 	{"text" : "Applicant must have Fair or better payment history.", "diff" : 2, "type" : "payment_history"},
 ]
 
-func interpret_rules(rule):
+func interpret_rules(rule): 
 	match RULES[rule]["text"]:
 		"Applicant must be 18 or older.":
 			guide["min_age"] = max(guide["min_age"], 18)
@@ -380,16 +380,32 @@ func loan_complete(result: String) -> void:
 	if Customers.customer["credit score"] >= guide["max_credit_score"]:
 		ret = "Deny"
 
-	if guide["required_education"].size() > 0:
-		if not Customers.customer["education"] in guide["required_education"]:
-			ret = "Deny"
+	if Customers.customer["income"] < guide["min_income"]:
+		ret = "Deny"
+	if Customers.customer["income"] >= guide["max_income"]:
+		ret = "Deny"
 
-	if guide["allowed_statuses"].size() > 0:
-		if not Customers.customer["status"] in guide["allowed_statuses"]:
+	if Customers.customer["debt"] >= guide["max_debt"]:
+		ret = "Deny"
+
+	if Customers.customer["employment years"] < guide["min_employment"]:
+		ret = "Deny"
+
+	if Customers.customer["loan amount"] < guide["min_loan"]:
+		ret = "Deny"
+	if Customers.customer["loan amount"] >= guide["max_loan"]:
+		ret = "Deny"
+
+	if Customers.customer["dti"] >= guide["max_dti"]:
+		ret = "Deny"
+
+	if guide["payment_history"].size() > 0:
+		if not Customers.customer["payment history"] in guide["payment_history"]:
 			ret = "Deny"
 
 	if result == ret:
 		PlayerData.player_data["money"] += 50
+
 	delete_customer(true)
 
 func loan_approved() -> void:

@@ -9,13 +9,14 @@ var job = "quickloans"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	check_settings()
+	check_settings(["desktop"])
 	Settings.settings_changed.connect(check_settings)
 
-func check_settings():
+func check_settings(status:Array):
 	if Settings.top_bar_size != top_bar.size.y:
 		top_bar.size.y = Settings.top_bar_size
-	$desktopImage.texture = PlayerData.get_desktop()
+	if status.has("desktop"):
+		$desktopImage.texture = PlayerData.get_desktop()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

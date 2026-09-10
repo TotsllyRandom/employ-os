@@ -6,6 +6,7 @@ extends Control
 func _ready() -> void:
 	$Main/VBoxContainer/Show_seconds/CheckButton.button_pressed = Settings.show_seconds
 	$"Main/VBoxContainer/Show AMPM/CheckButton".button_pressed = Settings.show_AmPm
+	$"Main/VBoxContainer/UseCustomDesktop/CheckButton".button_pressed = Settings.use_custom_desktop
 	
 
 
@@ -18,3 +19,7 @@ func _process(delta: float) -> void:
 func open_user_folder() -> void:
 	var path = ProjectSettings.globalize_path("user://")
 	OS.shell_open("file://" + path)
+
+
+func Change_show_seconds() -> void:
+	Settings.show_seconds = $Main/VBoxContainer/Show_seconds/CheckButton.button_pressed
