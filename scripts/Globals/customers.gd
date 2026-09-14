@@ -4,6 +4,8 @@ extends Node
 '''
 - stored customers (hold old customers)
 '''
+var prev_cust = ""
+var customers = {}
 var customer = {}
 var names = {
 	"first": [
@@ -150,7 +152,12 @@ var names = {
 	]
 }
 
-func make_customer(_job:String):
+func make_customers():
+	for i in range(1000):
+		make_customer()
+		delete_customer()
+
+func make_customer():
 	##job will determine which job the customer is for.
 	customer = {
 	"name" : "",
@@ -177,18 +184,37 @@ func make_customer(_job:String):
 	var payment_histories = ["Excellent", "Good", "Fair", "Poor"]
 	customer["payment history"] = payment_histories[randi_range(0, len(payment_histories)-1)]
 
+func get_customer():
+	var m = len(customers)-1
+	var i = randi_range(0, m)
+	if customers.keys()[i] == prev_cust:
+		if i < m:
+			i += 1
+		else:
+			i -= randi_range(1,m)
+	customer = customers[customers.keys()[i]]
+	customers.erase(customers.keys()[i])
+	
+
 func delete_customer():
+	customers[customer.get("name")] = customer
+	print("Customers length: " + str(len(customers)))
 	customer = {}
 
 
+
+
 func make_name():
+	var n = names.get("first")[randi_range(0,len(names.get("first"))-1)] +" "+ names.get("last")[randi_range(0,len(names.get("last"))-1)]
+	while customers.keys().has(n):
+		n = names.get("first")[randi_range(0,len(names.get("first"))-1)] +" "+ names.get("last")[randi_range(0,len(names.get("last"))-1)]
 	print("Name Made!")
-	return names.get("first")[randi_range(0,len(names.get("first"))-1)] +" "+ names.get("last")[randi_range(0,len(names.get("last"))-1)]
+	return n
 
 func _ready() -> void:
-	pass # Replace with function body.
+	make_customers()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

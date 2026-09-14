@@ -23,3 +23,7 @@ func open_user_folder() -> void:
 
 func Change_show_seconds() -> void:
 	Settings.show_seconds = $Main/VBoxContainer/Show_seconds/CheckButton.button_pressed
+
+
+func change_usecust_desktop() -> void:
+	Settings.use_custom_desktop = $Main/VBoxContainer/UseCustomDesktop/CheckButton.button_pressed

@@ -25,6 +25,7 @@ GameTime="*res://scripts/Globals/Time.gd"
 Applicatons="*uid://cf82ilfv43iyt"
 Customers="*uid://dcuk7dk6qnr7c"
 PlayerData="*uid://uoplp4ndm4xp"
+Cursor="*uid://djwpw33d4d8u7"
 
 [display]
 
@@ -32,11 +33,10 @@ window/size/mode=3
 window/size/borderless=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-mouse_cursor/custom_image="uid://dc2qpy2nwnfgi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg")
+enabled=PackedStringArray("res://addons/awesome_custom_cursor/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg")
 
 [global_group]
 

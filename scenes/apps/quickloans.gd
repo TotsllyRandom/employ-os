@@ -320,8 +320,9 @@ func _process(_delta: float) -> void:
 ## Make data for new customer
 func create_new_customer():
 	if Customers.customer == {}:
-		Customers.make_customer("quickloans")
+		Customers.get_customer()
 	update_screens()
+
 
 ## delete data for old customer
 func delete_customer(make_new: bool):
