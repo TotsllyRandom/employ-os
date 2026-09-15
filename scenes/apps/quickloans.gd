@@ -1,5 +1,7 @@
 extends Control
 
+
+var check_cust: Dictionary
 var guide = {
 	"min_age": 0,
 	"max_age": 106,
@@ -319,14 +321,14 @@ func _process(_delta: float) -> void:
 
 ## Make data for new customer
 func create_new_customer():
-	if Customers.customer == {}:
-		Customers.get_customer(-1)
+	if check_cust == {}:
+		check_cust = Customers.customers[Customers.customers.keys()[randi_range(0,len(Customers.customers.keys()))]]
 	update_screens()
 
 
 ## delete data for old customer
 func delete_customer(make_new: bool):
-	Customers.delete_customer()
+	check_cust = {}
 	if make_new:
 		create_new_customer()
 
@@ -342,7 +344,7 @@ func update_screens():
 	if screen == "Customer":
 		if is_in_shift:
 			$"Main/Usable Area/Customer/Name".visible = true
-			$"Main/Usable Area/Customer/Name".text = Customers.customer.get("name")
+			$"Main/Usable Area/Customer/Name".text = check_cust.get("name")
 			var items = ["Approve","Deny"]
 			$"Main/Usable Area/Customer/Loan Amount".visible = true
 			$"Main/Usable Area/Customer/Loan Amount".text = items[randi() % 2]
@@ -370,38 +372,39 @@ func _on_employee_pressed() -> void:
 
 func loan_complete(result: String) -> void:
 	var ret = "Approve"
+	var check = check_cust
 
-	if Customers.customer["age"] < guide["min_age"]:
+	if check["age"] < guide["min_age"]:
 		ret = "Deny"
-	if Customers.customer["age"] >= guide["max_age"]:
-		ret = "Deny"
-
-	if Customers.customer["credit score"] < guide["min_credit_score"]:
-		ret = "Deny"
-	if Customers.customer["credit score"] >= guide["max_credit_score"]:
+	if check["age"] >= guide["max_age"]:
 		ret = "Deny"
 
-	if Customers.customer["income"] < guide["min_income"]:
+	if check["credit score"] < guide["min_credit_score"]:
 		ret = "Deny"
-	if Customers.customer["income"] >= guide["max_income"]:
-		ret = "Deny"
-
-	if Customers.customer["debt"] >= guide["max_debt"]:
+	if check["credit score"] >= guide["max_credit_score"]:
 		ret = "Deny"
 
-	if Customers.customer["employment years"] < guide["min_employment"]:
+	if check["income"] < guide["min_income"]:
+		ret = "Deny"
+	if check["income"] >= guide["max_income"]:
 		ret = "Deny"
 
-	if Customers.customer["loan amount"] < guide["min_loan"]:
-		ret = "Deny"
-	if Customers.customer["loan amount"] >= guide["max_loan"]:
+	if check["debt"] >= guide["max_debt"]:
 		ret = "Deny"
 
-	if Customers.customer["dti"] >= guide["max_dti"]:
+	if check["employment years"] < guide["min_employment"]:
+		ret = "Deny"
+
+	if check["loan amount"] < guide["min_loan"]:
+		ret = "Deny"
+	if check["loan amount"] >= guide["max_loan"]:
+		ret = "Deny"
+
+	if check["dti"] >= guide["max_dti"]:
 		ret = "Deny"
 
 	if guide["payment_history"].size() > 0:
-		if not Customers.customer["payment history"] in guide["payment_history"]:
+		if not check["payment history"] in guide["payment_history"]:
 			ret = "Deny"
 
 	if result == ret:

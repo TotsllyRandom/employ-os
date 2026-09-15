@@ -10,10 +10,13 @@ func _ready() -> void:
 
 
 func check_for_cust(text:String):
-	var corrected = text.to_lower().capitalize()
-	if Customers.customers.keys().has(corrected):
+	var corrected = text.to_lower()
+	var keys = []
+	for key in Customers.customers.keys():
+		keys.append(str(key).to_lower())
+	if keys.has(corrected):
 		$Usable/Label.visible = false
-		Customers.get_customer(Customers.customers.find(corrected))
+		Customers.get_customer(keys.find(corrected))
 	else:
 		$Usable/Label.visible = true
 
@@ -38,6 +41,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
+	Customers.delete_customer()
 	print("customer checked: "+ new_text)
 	print(Customers.customers.has(new_text))
 	check_for_cust(new_text)
