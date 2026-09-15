@@ -320,7 +320,7 @@ func _process(_delta: float) -> void:
 ## Make data for new customer
 func create_new_customer():
 	if Customers.customer == {}:
-		Customers.get_customer()
+		Customers.get_customer(-1)
 	update_screens()
 
 

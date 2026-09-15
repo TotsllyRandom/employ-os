@@ -8,13 +8,22 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
+
+func check_for_cust(text:String):
+	var corrected = text.to_lower().capitalize()
+	if Customers.customers.keys().has(corrected):
+		$Usable/Label.visible = false
+		Customers.get_customer(Customers.customers.find(corrected))
+	else:
+		$Usable/Label.visible = true
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if Customers.customer == {}:
-		$Usable.visible = false
+		$Usable/VBoxContainer.visible = false
 		return
 
-	$Usable.visible = true
+	$Usable/VBoxContainer.visible = true
 
 	$Usable/VBoxContainer/Name.text = Customers.customer.get("name")
 	$Usable/VBoxContainer/Job.text = "Job: " + Customers.customer.get("job")
@@ -26,3 +35,9 @@ func _process(_delta: float) -> void:
 	$Usable/VBoxContainer/Loan.text = "Loan Amount: $" + str(Customers.customer.get("loan amount"))
 	$Usable/VBoxContainer/DTI.text = "Debt-to-Income: " + str(Customers.customer.get("dti")) + "%"
 	$Usable/VBoxContainer/PaymentHistory.text = "Payment History: " + Customers.customer.get("payment history")
+
+
+func _on_line_edit_text_submitted(new_text: String) -> void:
+	print("customer checked: "+ new_text)
+	print(Customers.customers.has(new_text))
+	check_for_cust(new_text)

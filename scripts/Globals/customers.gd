@@ -184,16 +184,21 @@ func make_customer():
 	var payment_histories = ["Excellent", "Good", "Fair", "Poor"]
 	customer["payment history"] = payment_histories[randi_range(0, len(payment_histories)-1)]
 
-func get_customer():
-	var m = len(customers)-1
-	var i = randi_range(0, m)
-	if customers.keys()[i] == prev_cust:
-		if i < m:
-			i += 1
-		else:
-			i -= randi_range(1,m)
+func get_customer(_a):
+	var i
+	if _a != -1:
+		i = _a
+	else:
+		var m = len(customers)-1
+		i = randi_range(0, m)
+		if customers.keys()[i] == prev_cust:
+			if i < m:
+				i += 1
+			else:
+				i -= randi_range(1,m)
 	customer = customers[customers.keys()[i]]
 	customers.erase(customers.keys()[i])
+	
 	
 
 func delete_customer():
