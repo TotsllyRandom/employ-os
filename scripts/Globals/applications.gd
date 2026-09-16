@@ -8,7 +8,7 @@ var apps = {
 		"name" = "Quickloans",
 	},
 	"settings":{
-		"min_size" = Vector2i(200,300),
+		"min_size" = Vector2i(300,300),
 		"name" = "Settings",
 	},
 	"contacts":{

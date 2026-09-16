@@ -28,17 +28,12 @@ func _process(_delta: float) -> void:
 
 	$Usable/VBoxContainer.visible = true
 
+
 	$Usable/VBoxContainer/Name.text = Customers.customer.get("name")
 	$Usable/VBoxContainer/Job.text = "Job: " + Customers.customer.get("job")
 	$Usable/VBoxContainer/Age.text = "Age: " + str(Customers.customer.get("age"))
 	$Usable/VBoxContainer/Credit.text = "Credit Score: " + str(Customers.customer.get("credit score"))
-	$Usable/VBoxContainer/Income.text = "Income: $" + str(Customers.customer.get("income"))
-	$Usable/VBoxContainer/Debt.text = "Debt: $" + str(Customers.customer.get("debt"))
 	$Usable/VBoxContainer/Employment.text = "Employment: " + str(Customers.customer.get("employment years")) + " years"
-	$Usable/VBoxContainer/Loan.text = "Loan Amount: $" + str(Customers.customer.get("loan amount"))
-	$Usable/VBoxContainer/DTI.text = "Debt-to-Income: " + str(Customers.customer.get("dti")) + "%"
-	$Usable/VBoxContainer/PaymentHistory.text = "Payment History: " + Customers.customer.get("payment history")
-
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	Customers.delete_customer()

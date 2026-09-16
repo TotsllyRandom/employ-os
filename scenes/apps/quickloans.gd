@@ -288,6 +288,8 @@ func interpret_rules(rule):
 ## ruleset made when player starts shift
 var rules = []
 
+var data_found: bool = false
+
 
 @export var screen: String = "Home":
 	set(new):
@@ -344,16 +346,22 @@ func update_screens():
 	if screen == "Customer":
 		if is_in_shift:
 			$"Main/Usable Area/Customer/Name".visible = true
-			$"Main/Usable Area/Customer/Name".text = check_cust.get("name")
-			var items = ["Approve","Deny"]
-			$"Main/Usable Area/Customer/Loan Amount".visible = true
-			$"Main/Usable Area/Customer/Loan Amount".text = items[randi() % 2]
-			$"Main/Usable Area/Customer/Panel".visible = true
-			$"Main/Usable Area/Customer/Warn".visible = false
+			$"Main/Usable Area/Customer/Name".text = "Applicant: "+check_cust.get("name")
+			
+			if data_found:
+				$"Main/Usable Area/Customer/VBoxContainer".visible = true
+				$"Main/Usable Area/Customer/VBoxContainer/Loan Amount".text = "Loan Amount: $"+str(check_cust["loan amount"])
+				$"Main/Usable Area/Customer/VBoxContainer/Debt".text = "Debt: $"+str(check_cust["debt"])
+				$"Main/Usable Area/Customer/VBoxContainer/Income".text = "Income: $"+str(check_cust["income"])+"/year"
+				$"Main/Usable Area/Customer/VBoxContainer/DTI".text = "DTI: "+str(check_cust["dti"])+"%"
+				$"Main/Usable Area/Customer/VBoxContainer/History".text = "History: "+str(check_cust["payment history"])
+				$"Main/Usable Area/Customer/Panel".visible = true
+				$"Main/Usable Area/Customer/Warn".visible = false
+			else:
+				pass
 		else:
-			$"Main/Usable Area/Customer/Name".visible = false
 			$"Main/Usable Area/Customer/Warn".visible = true
-			$"Main/Usable Area/Customer/Loan Amount".visible = false
+			$"Main/Usable Area/Customer/VBoxContainer".visible = false
 			$"Main/Usable Area/Customer/Panel".visible = false
 			
 	if screen == "Home":
