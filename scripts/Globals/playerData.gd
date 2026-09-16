@@ -8,8 +8,18 @@ var default_player_data = {
 	"exp" : 0,
 }
 
+var default_job_specific_data = {
+	"quickloans" : {
+		"exp":0,
+		"total loans completed":0,
+		"total loans accepted":0,
+		"total loans correct":0,
+		}
+}
+
 ## Real Player Data
 var player_data = {}
+var job_specific_data = {}
 
 
 const PLAYER_DIR := "user://"
@@ -19,8 +29,9 @@ const FOLDERS := [
 	"mods",
 	"apps"
 ]
+const PATH_FOLDER = PLAYER_DIR + FOLDERS[1]
+const PATH = PATH_FOLDER + "/player.json"
 
-const PATH = PLAYER_DIR + FOLDERS[1] + "/player.json"
 
 func _ready() -> void:
 	load_player_dir()
@@ -68,8 +79,15 @@ func save_player_data():
 	file.store_string(JSON.stringify(player_data))
 	print("Stored Data: "+JSON.stringify(player_data))
 	file.close()
+	file = FileAccess.open(PATH_FOLDER+"/"+player_data["job"]+".json", FileAccess.WRITE)
+	if file:
+		print("found Job Data file")
+	file.store_string(JSON.stringify(job_specific_data))
+	print("Stored Data: "+JSON.stringify(job_specific_data))
+	file.close()
 
 func load_player_data():
+	#Player Data
 	if not FileAccess.file_exists(PATH):
 		var newFile = FileAccess.open(PATH, FileAccess.WRITE)
 		newFile.store_string(JSON.stringify(default_player_data))
@@ -80,7 +98,20 @@ func load_player_data():
 	for key in default_player_data:
 		if not player_data.keys().has(key):
 			player_data[key] = default_player_data[key]
-	print(player_data)
+	
+	#Job Data
+	if not FileAccess.file_exists(PATH_FOLDER+"/"+player_data["job"]+".json"):
+		var newFile = FileAccess.open(PATH_FOLDER+"/"+player_data["job"]+".json", FileAccess.WRITE)
+		newFile.store_string(JSON.stringify(default_job_specific_data[player_data["job"]]))
+		newFile.close()
+	job_specific_data = JSON.parse_string(FileAccess.get_file_as_string(PATH_FOLDER+"/"+player_data["job"]+".json"))
+	if job_specific_data == null:
+		job_specific_data = default_job_specific_data[player_data["job"]]
+	for key in default_job_specific_data[player_data["job"]]:
+		if not job_specific_data.keys().has(key):
+			job_specific_data[key] = default_job_specific_data[player_data["job"]][key]
+	
+	print(job_specific_data)
 	
 func get_desktop():
 	var dir = DirAccess.open(PLAYER_DIR + FOLDERS[0])

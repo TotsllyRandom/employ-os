@@ -387,7 +387,10 @@ func update_screens():
 			$"Main/Usable Area/Customer/VBoxContainer".visible = false
 			$"Main/Usable Area/Customer/Panel".visible = false
 	
-	
+	if screen == "Employee":
+		$"Main/Usable Area/Employee/VBoxContainer/RFP".text = "rfp"
+		$"Main/Usable Area/Employee/VBoxContainer/LoansAccepted".text = "Loans Accepted"
+		$"Main/Usable Area/Employee/VBoxContainer/TotalLoans".text = "Total Loans"
 	
 	if screen == "Home":
 		$"Main/Usable Area/Home/OutShift".visible = false
