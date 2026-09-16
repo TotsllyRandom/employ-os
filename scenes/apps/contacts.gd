@@ -40,11 +40,18 @@ func get_array_of_names(entry:String) -> Array:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	$Usable.size = size - Vector2(10,10)
+	$Usable.position = Vector2(5,5)
+	
+	
 	if Customers.customer == {}:
 		$Usable/InCustomerMenu.visible = false
 		$Usable/CustomerSearch.visible = true
 		return
-
+	$Usable/CustomerSearch/ScrollContainer/VScrollBar.visible = true
+	if len($Usable/CustomerSearch/ScrollContainer/VBoxContainer.get_children())==1:
+		$Usable/CustomerSearch/ScrollContainer/VScrollBar.visible = false
+	
 	$Usable/CustomerSearch.visible = false
 	$Usable/InCustomerMenu.visible = true
 
