@@ -46,7 +46,7 @@ anchor_bottom = 1.0
 offset_left = -1.0
 grow_horizontal = 0
 grow_vertical = 2
-text = "fdsafdsafdsafdsafdsafdsa  "
+text = "99:99 AM   "
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -63,7 +63,7 @@ offset_right = 103.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "fdsafdsafdsafdsafdsafdsa  "
+text = "$999999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -76,5 +76,5 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "fdsafdsafdsafdsafdsafdsa  "
+text = "  Autosave in X"
 vertical_alignment = 1

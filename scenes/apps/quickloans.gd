@@ -386,7 +386,9 @@ func update_screens():
 			$"Main/Usable Area/Customer/Warn".visible = true
 			$"Main/Usable Area/Customer/VBoxContainer".visible = false
 			$"Main/Usable Area/Customer/Panel".visible = false
-			
+	
+	
+	
 	if screen == "Home":
 		$"Main/Usable Area/Home/OutShift".visible = false
 		$"Main/Usable Area/Home/InShift".visible = false
