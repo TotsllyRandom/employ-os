@@ -21,27 +21,6 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Usable" unique_id=2089270282]
-layout_mode = 0
-offset_top = 30.0
-offset_right = 40.0
-offset_bottom = 399.0
-
-[node name="Name" type="Label" parent="Usable/VBoxContainer" unique_id=1363049707]
-layout_mode = 2
-
-[node name="Age" type="Label" parent="Usable/VBoxContainer" unique_id=1047119831]
-layout_mode = 2
-
-[node name="Job" type="Label" parent="Usable/VBoxContainer" unique_id=1751270422]
-layout_mode = 2
-
-[node name="Credit" type="Label" parent="Usable/VBoxContainer" unique_id=1696022666]
-layout_mode = 2
-
-[node name="Employment" type="Label" parent="Usable/VBoxContainer" unique_id=1675111640]
-layout_mode = 2
-
 [node name="Label" type="Label" parent="Usable" unique_id=1566383078]
 visible = false
 layout_mode = 1
@@ -54,6 +33,66 @@ text = "No contact found. Please check spelling."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="InCustomerMenu" type="Control" parent="Usable" unique_id=1430187237]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 35.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Usable/InCustomerMenu" unique_id=2089270282]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="Usable/InCustomerMenu/VBoxContainer" unique_id=1363049707]
+layout_mode = 2
+
+[node name="Age" type="Label" parent="Usable/InCustomerMenu/VBoxContainer" unique_id=1047119831]
+layout_mode = 2
+
+[node name="Credit" type="Label" parent="Usable/InCustomerMenu/VBoxContainer" unique_id=1696022666]
+layout_mode = 2
+
+[node name="Job" type="Label" parent="Usable/InCustomerMenu/VBoxContainer" unique_id=1751270422]
+layout_mode = 2
+
+[node name="Employment" type="Label" parent="Usable/InCustomerMenu/VBoxContainer" unique_id=1675111640]
+layout_mode = 2
+
+[node name="CustomerSearch" type="Control" parent="Usable" unique_id=1669347754]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 35.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Usable/CustomerSearch" unique_id=463299055]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Button" parent="Usable/CustomerSearch/VBoxContainer" unique_id=1131619101]
+visible = false
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+text = "Jackson Goodman"
+
+[node name="VScrollBar" type="VScrollBar" parent="Usable/CustomerSearch/VBoxContainer" unique_id=3958033]
+layout_mode = 2
 
 [node name="LineEdit" type="LineEdit" parent="Usable" unique_id=177918444]
 custom_minimum_size = Vector2(0, 30)

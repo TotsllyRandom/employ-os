@@ -90,7 +90,6 @@ const RULES = [
 	{"text" : "Applicant must have Good or Excellent payment history.", "diff" : 1, "type" : "payment_history"},
 	{"text" : "Applicant must have Fair or better payment history.", "diff" : 2, "type" : "payment_history"},
 ]
-
 func interpret_rules(rule): 
 	match RULES[rule]["text"]:
 		"Applicant must be 18 or older.":
@@ -289,6 +288,7 @@ func interpret_rules(rule):
 var rules = []
 
 var data_found: bool = false
+var bar_is_moving:= false
 
 
 @export var screen: String = "Home":
@@ -318,6 +318,14 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	$"Main/Usable Area".size.y = $Main.size.y - $"Button Panel".size.y
 	$"Main/Usable Area".position.y = $"Button Panel".size.y
+	$"Main/Usable Area/Customer/VBoxContainer".size.y = $"Main/Usable Area".size.y - $"Main/Usable Area/Customer/Name".size.y
+	$"Main/Usable Area/Customer/VBoxContainer".position.y = $"Main/Usable Area/Customer/Name".size.y
+	var bar = $"Main/Usable Area/Customer/ProgressBar"
+	if bar_is_moving:
+		## Luck
+		if randi_range(1,100) == 1:
+			bar.value += bar.step * 4
+		bar.value += bar.step
 
 
 
@@ -331,6 +339,7 @@ func create_new_customer():
 ## delete data for old customer
 func delete_customer(make_new: bool):
 	check_cust = {}
+	data_found = false
 	if make_new:
 		create_new_customer()
 
@@ -344,10 +353,18 @@ func _on_customer_pressed() -> void:
 
 func update_screens():
 	if screen == "Customer":
+		
 		if is_in_shift:
 			$"Main/Usable Area/Customer/Name".visible = true
 			$"Main/Usable Area/Customer/Name".text = "Applicant: "+check_cust.get("name")
+			$"Main/Usable Area/Customer/Panel".visible = true
+			$"Main/Usable Area/Customer/Warn".visible = false
 			
+			if !bar_is_moving:
+				$"Main/Usable Area/Customer/ProgressBar".visible = false
+			else:
+				$"Main/Usable Area/Customer/ProgressBar".visible = true
+				
 			if data_found:
 				$"Main/Usable Area/Customer/VBoxContainer".visible = true
 				$"Main/Usable Area/Customer/VBoxContainer/Loan Amount".text = "Loan Amount: $"+str(check_cust["loan amount"])
@@ -355,11 +372,14 @@ func update_screens():
 				$"Main/Usable Area/Customer/VBoxContainer/Income".text = "Income: $"+str(check_cust["income"])+"/year"
 				$"Main/Usable Area/Customer/VBoxContainer/DTI".text = "DTI: "+str(check_cust["dti"])+"%"
 				$"Main/Usable Area/Customer/VBoxContainer/History".text = "History: "+str(check_cust["payment history"])
-				$"Main/Usable Area/Customer/Panel".visible = true
-				$"Main/Usable Area/Customer/Warn".visible = false
 			else:
-				pass
+				$"Main/Usable Area/Customer/VBoxContainer".visible = false
+				
+				if !bar_is_moving:
+					$"Main/Usable Area/Customer/Button".visible = true
+				
 		else:
+			$"Main/Usable Area/Customer/Name".visible = false
 			$"Main/Usable Area/Customer/Warn".visible = true
 			$"Main/Usable Area/Customer/VBoxContainer".visible = false
 			$"Main/Usable Area/Customer/Panel".visible = false
@@ -499,3 +519,18 @@ func _on_start_shift_pressed() -> void:
 
 func _on_end_shift_pressed() -> void:
 	is_in_shift = false
+
+
+func check_for_data() -> void:
+	$"Main/Usable Area/Customer/Button".visible = false
+	var bar = $"Main/Usable Area/Customer/ProgressBar"
+	bar.value = 0
+	bar.visible = true
+	bar_is_moving = true
+
+
+func _on_progress_bar_value_changed(value: float) -> void:
+	if value >= 100:
+		bar_is_moving = false
+		data_found = true
+		update_screens()

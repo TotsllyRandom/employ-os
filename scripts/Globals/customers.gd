@@ -178,33 +178,37 @@ func make_customer():
 	customer["credit score"] = randi_range(300,850)
 	customer["income"] = randi_range(20000,150000)
 	customer["debt"] = randi_range(0,100000)
-	customer["employment years"] = randi_range(0,20)
+	customer["employment years"] = randi_range(0,customer["age"]-14)
+	if customer["employment years"] <= 0:
+		customer["job"] = "Unemployed"
+		customer["employment years"] = customer["age"]
 	customer["loan amount"] = randi_range(1000,100000)
 	customer["dti"] = randi_range(5,70)
 	var payment_histories = ["Excellent", "Good", "Fair", "Poor"]
 	customer["payment history"] = payment_histories[randi_range(0, len(payment_histories)-1)]
 
-func get_customer(_a):
-	var i
-	if _a != -1:
-		i = _a
+func get_customer(ID):
+	var RandCustID
+	if ID != -1:
+		RandCustID = ID
 	else:
 		var m = len(customers)-1
-		i = randi_range(0, m)
-		if customers.keys()[i] == prev_cust:
-			if i < m:
-				i += 1
+		RandCustID = randi_range(0, m)
+		if customers.keys()[RandCustID] == prev_cust:
+			if RandCustID < m:
+				RandCustID += 1
 			else:
-				i -= randi_range(1,m)
-	customer = customers[customers.keys()[i]]
-	customers.erase(customers.keys()[i])
+				RandCustID -= randi_range(1,m)
+	customer = customers[customers.keys()[RandCustID]]
+	customers.erase(customers.keys()[RandCustID])
 	
 	
 
 func delete_customer():
-	customers[customer.get("name")] = customer
-	print("Customers length: " + str(len(customers)))
-	customer = {}
+	if !customer == {}:
+		customers[customer.get("name")] = customer
+		print("Customers length: " + str(len(customers)))
+		customer = {}
 
 
 

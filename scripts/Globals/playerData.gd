@@ -63,7 +63,10 @@ func load_player_dir() -> void:
 
 func save_player_data():
 	var file = FileAccess.open(PATH, FileAccess.WRITE)
+	if file:
+		print("found Player Data file")
 	file.store_string(JSON.stringify(player_data))
+	print("Stored Data: "+JSON.stringify(player_data))
 	file.close()
 
 func load_player_data():
