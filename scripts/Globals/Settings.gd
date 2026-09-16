@@ -7,12 +7,12 @@ var use_custom_desktop: bool = false:
 		use_custom_desktop = new
 		settings_changed.emit(["desktop"])
 
-var show_seconds: bool = true:
+var show_seconds: bool = false:
 	set(new):
 		show_seconds = new
 		settings_changed.emit([""])
 		
-var show_AmPm: bool = true:
+var show_AmPm: bool = false:
 	set(new):
 		show_AmPm = new
 		settings_changed.emit([""])

@@ -155,5 +155,6 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [connection signal="pressed" from="Main/VBoxContainer/Show_seconds/CheckButton" to="." method="Change_show_seconds"]
+[connection signal="pressed" from="Main/VBoxContainer/Show AMPM/CheckButton" to="." method="change_show_ampm"]
 [connection signal="pressed" from="Main/VBoxContainer/OpenPlayerFolder/Button" to="." method="open_user_folder"]
 [connection signal="pressed" from="Main/VBoxContainer/UseCustomDesktop/CheckButton" to="." method="change_usecust_desktop"]

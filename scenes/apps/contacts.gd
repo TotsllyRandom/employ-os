@@ -1,21 +1,24 @@
 extends Control
 
 func check_for_cust(text:String):
+	for child in $Usable/CustomerSearch/ScrollContainer/VBoxContainer.get_children():
+		if child.name != "Name":
+			child.queue_free()
 	var corrected = text.to_lower()
 	var found = get_array_of_names(corrected)
-	$Usable/CustomerSearch/VBoxContainer/Name.visible = true
 	for item in found:
-		var new = $Usable/CustomerSearch/VBoxContainer/Name.duplicate()
+		var new = $Usable/CustomerSearch/ScrollContainer/VBoxContainer/Name.duplicate()
 		new.name = item
 		new.text = new.name
-		$Usable/CustomerSearch/VBoxContainer.add_child(new)
-	$Usable/CustomerSearch/VBoxContainer/Name.visible = false
+		new.visible = true
+		new.pressed.connect(chose_a_cust.bind(new.name))
+		$Usable/CustomerSearch/ScrollContainer/VBoxContainer.add_child(new)
 	if len(found) == 0:
 		$Usable/Label.visible = true
 	else:
 		$Usable/Label.visible = false
 		
-	
+
 func chose_a_cust(name):
 	var n = name.to_lower()
 	var keys = []
@@ -39,9 +42,11 @@ func get_array_of_names(entry:String) -> Array:
 func _process(_delta: float) -> void:
 	if Customers.customer == {}:
 		$Usable/InCustomerMenu.visible = false
+		$Usable/CustomerSearch.visible = true
 		return
 
-	$Usable/InCustomerMenu/VBoxContainer.visible = true
+	$Usable/CustomerSearch.visible = false
+	$Usable/InCustomerMenu.visible = true
 
 
 	$Usable/InCustomerMenu/VBoxContainer/Name.text = Customers.customer.get("name")
@@ -51,6 +56,7 @@ func _process(_delta: float) -> void:
 	$Usable/InCustomerMenu/VBoxContainer/Employment.text = "Employed for " + str(Customers.customer.get("employment years")) + " years"
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
+	
 	Customers.delete_customer()
 	print("customer checked: "+ new_text)
 	print(Customers.customers.has(new_text))

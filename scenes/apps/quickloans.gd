@@ -373,12 +373,15 @@ func update_screens():
 				$"Main/Usable Area/Customer/VBoxContainer/DTI".text = "DTI: "+str(check_cust["dti"])+"%"
 				$"Main/Usable Area/Customer/VBoxContainer/History".text = "History: "+str(check_cust["payment history"])
 			else:
+				$"Main/Usable Area/Customer/Button".visible = false
 				$"Main/Usable Area/Customer/VBoxContainer".visible = false
 				
 				if !bar_is_moving:
 					$"Main/Usable Area/Customer/Button".visible = true
 				
 		else:
+			$"Main/Usable Area/Customer/Button".visible = false
+			$"Main/Usable Area/Customer/ProgressBar".visible = false
 			$"Main/Usable Area/Customer/Name".visible = false
 			$"Main/Usable Area/Customer/Warn".visible = true
 			$"Main/Usable Area/Customer/VBoxContainer".visible = false
@@ -399,6 +402,8 @@ func _on_employee_pressed() -> void:
 
 
 func loan_complete(result: String) -> void:
+	bar_is_moving = false
+	
 	var ret = "Approve"
 	var check = check_cust
 

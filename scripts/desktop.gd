@@ -7,6 +7,9 @@ var job = "quickloans"
 @onready var top_bar = $topBar
 @onready var desktop_image = $desktopImage
 
+## delta check (checks every 5 mins for saving)
+@export var dCheck := 300.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	check_settings(["desktop"])
@@ -24,6 +27,14 @@ func _process(_delta: float) -> void:
 		make_window(Applicatons.get_random())
 	$topBar/time.text = GameTime.get_clock_time()
 	$topBar/money.text = "$%d" % [PlayerData.player_data["money"]]
+	dCheck -= _delta
+	$topBar/deltaCheck.visible = false
+	if dCheck<= 0.0:
+		PlayerData.save_player_data()
+		dCheck = 300.0
+	if dCheck<= 5.0:
+		$topBar/deltaCheck.visible = true
+		$topBar/deltaCheck.text = "  Autosave in "+str(round(int(dCheck)))
 	
 func make_window(app:String):
 	var win = Window.new()

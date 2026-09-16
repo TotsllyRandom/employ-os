@@ -27,3 +27,7 @@ func Change_show_seconds() -> void:
 
 func change_usecust_desktop() -> void:
 	Settings.use_custom_desktop = $Main/VBoxContainer/UseCustomDesktop/CheckButton.button_pressed
+
+
+func change_show_ampm() -> void:
+	Settings.show_AmPm = $"Main/VBoxContainer/Show AMPM/CheckButton".button_pressed
