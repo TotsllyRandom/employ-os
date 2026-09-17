@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Make Window Debug"):
 		make_window(Applicatons.get_random())
 	$topBar/time.text = GameTime.get_clock_time()
-	$topBar/money.text = "$%d" % [PlayerData.player_data["money"]]
+	$topBar/money.text = "$"+Extras.comma(PlayerData.player_data["money"])
 	dCheck -= _delta
 	$topBar/deltaCheck.visible = false
 	if dCheck<= 0.0:

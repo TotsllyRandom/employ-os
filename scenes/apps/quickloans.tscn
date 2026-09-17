@@ -25,7 +25,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 10.0
-offset_top = 10.0
+offset_top = 32.0
 offset_right = -10.0
 offset_bottom = -10.0
 grow_horizontal = 2
@@ -96,6 +96,7 @@ grow_vertical = 2
 text = "Clock In (Start Shift)"
 
 [node name="Customer" type="Control" parent="Main/Usable Area" unique_id=391591908]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -107,7 +108,7 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 23.0
-text = "Customer"
+text = "Name: Name Name"
 vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Main/Usable Area/Customer" unique_id=286561121]
@@ -217,7 +218,6 @@ grow_vertical = 2
 step = 0.1
 
 [node name="Employee" type="Control" parent="Main/Usable Area" unique_id=1069571698]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -225,20 +225,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label3" type="Label" parent="Main/Usable Area/Employee" unique_id=1842957284]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/Usable Area/Employee" unique_id=135659065]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -11.5
-offset_right = 38.0
-offset_bottom = 11.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Employee"
+
+[node name="TitleA" type="Label" parent="Main/Usable Area/Employee/VBoxContainer" unique_id=1842957284]
+layout_mode = 2
+text = "Employee Statistics"
+horizontal_alignment = 1
+
+[node name="RFP" type="Label" parent="Main/Usable Area/Employee/VBoxContainer" unique_id=91856164]
+layout_mode = 2
+text = "Employee Rule Following Percentage:"
+
+[node name="LoansAccepted" type="Label" parent="Main/Usable Area/Employee/VBoxContainer" unique_id=1883688484]
+layout_mode = 2
+text = "Total Loans Accepted:"
+
+[node name="TotalLoans" type="Label" parent="Main/Usable Area/Employee/VBoxContainer" unique_id=1440631630]
+layout_mode = 2
+text = "Total Loans Completed:"
 
 [node name="Button Panel" type="Panel" parent="." unique_id=592873805]
 layout_mode = 1
