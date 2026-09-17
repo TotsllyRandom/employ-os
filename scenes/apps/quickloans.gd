@@ -367,9 +367,9 @@ func update_screens():
 				
 			if data_found:
 				$"Main/Usable Area/Customer/VBoxContainer".visible = true
-				$"Main/Usable Area/Customer/VBoxContainer/Loan Amount".text = "Loan Amount: $"+str(check_cust["loan amount"])
-				$"Main/Usable Area/Customer/VBoxContainer/Debt".text = "Debt: $"+str(check_cust["debt"])
-				$"Main/Usable Area/Customer/VBoxContainer/Income".text = "Income: $"+str(check_cust["income"])+"/year"
+				$"Main/Usable Area/Customer/VBoxContainer/Loan Amount".text = "Loan Amount: $"+Extras.comma(check_cust["loan amount"])
+				$"Main/Usable Area/Customer/VBoxContainer/Debt".text = "Debt: $"+Extras.comma(check_cust["debt"])
+				$"Main/Usable Area/Customer/VBoxContainer/Income".text = "Income: $"+Extras.comma(check_cust["income"])+"/year"
 				$"Main/Usable Area/Customer/VBoxContainer/DTI".text = "DTI: "+str(check_cust["dti"])+"%"
 				$"Main/Usable Area/Customer/VBoxContainer/History".text = "History: "+str(check_cust["payment history"])
 			else:
