@@ -24,7 +24,7 @@ func check_settings(status:Array):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Make Window Debug"):
-		make_window(Applicatons.get_random())
+		Applications.make_window(Applications.get_random())
 	$topBar/time.text = GameTime.get_clock_time()
 	$topBar/money.text = "$"+Extras.comma(PlayerData.player_data["money"])
 	dCheck -= _delta
@@ -36,20 +36,5 @@ func _process(_delta: float) -> void:
 		$topBar/deltaCheck.visible = true
 		$topBar/deltaCheck.text = "  Autosave in "+str(round(int(dCheck)))
 	
-func make_window(app:String):
-	var win = Window.new()
-	win.name = app
-	for child in get_children():
-		if child.is_in_group("window"):
-			if child.name == app:
-				win.name = "DELETE"
-	win.add_to_group("window")
-	win.set_script(window_script)
-	win.close_requested.connect(win.close)
-	win.position = Vector2i(
-		50,50
-	)
-	
-	add_child(win)
 	
 	

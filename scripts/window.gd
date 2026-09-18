@@ -7,17 +7,17 @@ func _ready():
 		queue_free()
 		return
 	var n = name
-	if Applicatons.apps[name].get("req_job") != null && Applicatons.apps[name].get("req_job") != PlayerData.player_data["job"]:
+	if Applications.apps[name].get("req_job") != null && Applications.apps[name].get("req_job") != PlayerData.player_data["job"]:
 		n = "incorrectJob"
-	title = Applicatons.apps[n].get("name")
+	title = Applications.apps[n].get("name")
 	
 	var scene = load("res://scenes/apps/" + n + ".tscn")
 	if scene:
 		add_child(scene.instantiate())
-	if Applicatons.apps[n].get("min_size"):
-		min_size = Applicatons.apps[n].get("min_size")
-	if Applicatons.apps[n].get("max_size"):
-		max_size = Applicatons.apps[n].get("max_size")
+	if Applications.apps[n].get("min_size"):
+		min_size = Applications.apps[n].get("min_size")
+	if Applications.apps[n].get("max_size"):
+		max_size = Applications.apps[n].get("max_size")
 		
 func close():
 	queue_free()
