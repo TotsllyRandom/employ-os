@@ -14,6 +14,9 @@ var default_job_specific_data = {
 		"total loans completed":0,
 		"total loans accepted":0,
 		"total loans correct":0,
+		"upgrades" : {
+			
+		}
 		}
 }
 
@@ -72,6 +75,9 @@ func load_player_dir() -> void:
 	
 	dir.list_dir_end()
 
+func save_job_upgrades(entry: Dictionary):
+	job_specific_data[player_data["job"]]["upgrades"] = entry
+
 func save_player_data():
 	var file = FileAccess.open(PATH, FileAccess.WRITE)
 	if file:
@@ -79,6 +85,7 @@ func save_player_data():
 	file.store_string(JSON.stringify(player_data))
 	print("Stored Data: "+JSON.stringify(player_data))
 	file.close()
+	
 	file = FileAccess.open(PATH_FOLDER+"/"+player_data["job"]+".json", FileAccess.WRITE)
 	if file:
 		print("found Job Data file")
