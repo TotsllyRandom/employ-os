@@ -35,12 +35,13 @@ func get_random():
 func make_window(app:String):
 	var win = Window.new()
 	win.name = app
-	for child in get_children():
-		if child.is_in_group("window"):
-			if child.name == app:
-				win.name = "DELETE"
 	win.add_to_group("window")
 	win.set_script(load("res://scripts/window.gd"))
+	win.app = app
+	for child in get_tree().root.get_node_or_null("desktop").get_children():
+		if child.is_in_group("window"):
+			if child.name == app:
+				win.app = "DELETE"
 	win.close_requested.connect(win.close)
 	win.position = Vector2i(
 		50,50

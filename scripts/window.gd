@@ -1,13 +1,15 @@
 extends Window
 
 @onready var system_theme = load("res://assets/other/SystemTheme.tres")
+@export var app:String = "incorrectJob"
+
 
 func _ready():
-	if name == "DELETE":
+	if app == "DELETE":
 		queue_free()
 		return
-	var n = name
-	if Applications.apps[name].get("req_job") != null && Applications.apps[name].get("req_job") != PlayerData.player_data["job"]:
+	var n = app
+	if Applications.apps[app].get("req_job") != null && Applications.apps[app].get("req_job") != PlayerData.player_data["job"]:
 		n = "incorrectJob"
 	title = Applications.apps[n].get("name")
 	
